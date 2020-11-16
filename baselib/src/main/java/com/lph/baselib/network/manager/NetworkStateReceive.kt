@@ -1,10 +1,12 @@
-package me.hgj.jetpackmvvm.network.manager
+package com.lph.baselib.network.manager
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
-import me.hgj.jetpackmvvm.network.NetworkUtil
+import com.lph.baselib.network.NetworkUtil
+import me.hgj.jetpackmvvm.network.manager.NetState
+import me.hgj.jetpackmvvm.network.manager.NetworkStateManager
 
 /**
  * 作者　: hegaojian
