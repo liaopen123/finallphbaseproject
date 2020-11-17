@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.lph.finallphbaseproject.base.BaseActivity
 import com.lph.finallphbaseproject.databinding.ActivityMainBinding
+import com.lph.finallphbaseproject.widget.loadsir.callback.LoadingCallback
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
@@ -13,6 +14,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         mDataBinding.vm = mViewModel
+        loadSir.showCallback(LoadingCallback::class.java)
     }
 
 

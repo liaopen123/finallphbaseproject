@@ -105,4 +105,9 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
      * 供子类BaseVmDbActivity 初始化Databinding操作
      */
     open fun initDataBind() {}
+
+    /**
+     * 用于loadsir界面onReload重新刷新的时候用的
+     */
+    abstract fun onReload()
 }

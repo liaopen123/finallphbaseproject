@@ -1,4 +1,3 @@
 include ':baselib'
-include ':base'
 include ':app'
 rootProject.name = "finallphbaseproject"

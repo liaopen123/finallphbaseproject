@@ -2,6 +2,7 @@ package com.lph.finallphbaseproject.base
 
 import android.app.Application
 import com.kingja.loadsir.core.LoadSir
+import com.lph.finallphbaseproject.widget.loadsir.callback.*
 import com.tencent.mmkv.MMKV
 
 class App : Application() {
@@ -28,10 +29,15 @@ class App : Application() {
 
     private fun initLoadSir() {
         LoadSir.beginBuilder()
-            .addCallback(LoadingCallback())//加载
-            .addCallback(EmptyCallback())//空
-            .setDefaultCallback(SuccessCallback::class.java)//设置默认加载状态页
+            .addCallback(ErrorCallback())
+            .addCallback(EmptyCallback())
+            .addCallback(LoadingCallback())
+            .addCallback(TimeoutCallback())
+            .addCallback(CustomCallback())
+            .setDefaultCallback(LoadingCallback::class.java)
             .commit()
+
+
     }
 
 

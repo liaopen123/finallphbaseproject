@@ -1,10 +1,13 @@
 package com.lph.finallphbaseproject.base
 
-import android.content.res.Resources
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.ViewDataBinding
+import com.kingja.loadsir.callback.Callback
+import com.kingja.loadsir.core.LoadSir
 import com.lph.baselib.base.activity.BaseDBVMActivity
 import com.lph.baselib.viewmodel.BaseViewModel
+
 
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseDBVMActivity<VM, DB>() {
 
@@ -18,6 +21,10 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseDBVM
 
     abstract override fun initView(savedInstanceState: Bundle?)
 
+
+    val loadSir by lazy{
+     LoadSir.getDefault().register(this) { onReload() }
+    }
     /**
      * 创建liveData观察者
      */
@@ -44,4 +51,8 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseDBVM
 //        AutoSizeCompat.autoConvertDensityOfGlobal(super.getResources())
 //        return super.getResources()
 //    }
+    /**
+     *  空实现 activity 可以自己实现 重试的code
+     */
+    override fun onReload() {}
 }
