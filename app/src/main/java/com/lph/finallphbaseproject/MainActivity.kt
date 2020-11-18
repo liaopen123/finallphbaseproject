@@ -1,6 +1,7 @@
 package com.lph.finallphbaseproject
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.lph.finallphbaseproject.base.BaseActivity
@@ -29,4 +30,10 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         super.onStart()
         mViewModel.notifyTitle("gaga")
     }
+
+//    override fun getLoadSirWrapper(): Any {
+//        Toast.makeText(this, "main", Toast.LENGTH_SHORT).show()
+//       var view = findViewById<View>(R.id.ll_container)
+//        return view
+//    }
 }

@@ -2,6 +2,7 @@ package com.lph.finallphbaseproject.base
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.ViewDataBinding
 import com.kingja.loadsir.callback.Callback
 import com.kingja.loadsir.core.LoadSir
@@ -23,7 +24,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseDBVM
 
 
     val loadSir by lazy{
-     LoadSir.getDefault().register(this) { onReload() }
+     LoadSir.getDefault().register(getLoadSirWrapper()) { onReload() }
     }
     /**
      * 创建liveData观察者
@@ -55,4 +56,9 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseDBVM
      *  空实现 activity 可以自己实现 重试的code
      */
     override fun onReload() {}
+
+    open fun getLoadSirWrapper():Any{
+        Toast.makeText(this, "base", Toast.LENGTH_SHORT).show()
+        return this
+    }
 }
