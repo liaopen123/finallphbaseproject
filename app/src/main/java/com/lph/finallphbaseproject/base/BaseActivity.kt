@@ -8,6 +8,8 @@ import com.kingja.loadsir.callback.Callback
 import com.kingja.loadsir.core.LoadSir
 import com.lph.baselib.base.activity.BaseDBVMActivity
 import com.lph.baselib.viewmodel.BaseViewModel
+import com.lph.finallphbaseproject.ext.hideLoadingExt
+import com.lph.finallphbaseproject.ext.showLoadingExt
 
 
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseDBVMActivity<VM, DB>() {
@@ -35,14 +37,14 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseDBVM
      * 打开等待框
      */
     override fun showLoading(message: String) {
-//        showLoadingExt(message)
+        showLoadingExt(message)
     }
 
     /**
      * 关闭等待框
      */
     override fun dismissLoading() {
-//        dismissLoadingExt()
+        hideLoadingExt()
     }
 
 //    /**
