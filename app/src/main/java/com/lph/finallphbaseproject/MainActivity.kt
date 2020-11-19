@@ -1,8 +1,10 @@
 package com.lph.finallphbaseproject
 
+
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import com.lph.finallphbaseproject.base.BaseActivity
 import com.lph.finallphbaseproject.databinding.ActivityMainBinding
 import com.lph.finallphbaseproject.widget.loadsir.callback.LoadingCallback
@@ -12,8 +14,13 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
     override fun layoutId() = R.layout.activity_main
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+
     override fun initView(savedInstanceState: Bundle?) {
-        mDataBinding.vm = mViewModel
+        val findViewById = findViewById<BottomNavigationViewEx>(R.id.mainBottom)
     }
 
 

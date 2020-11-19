@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">finallphbaseproject</string>
+
+
+    <string name="bottom_name1">首页</string>
+    <string name="bottom_name2">项目</string>
+    <string name="bottom_name3">广场</string>
+    <string name="bottom_name5">我的</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
