@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 open class BaseViewModel : ViewModel() {
 
     var loadingVM :MutableLiveData<Boolean> = MutableLiveData()
+    var errorMessage :MutableLiveData<String> = MutableLiveData()
 
     fun showLoading(){
         loadingVM.value = true
@@ -18,5 +19,10 @@ open class BaseViewModel : ViewModel() {
 
     fun hideLoading(){
         loadingVM.value = false
+    }
+
+    fun showError(errorMsg:String){
+        errorMessage.value = errorMsg
+
     }
 }

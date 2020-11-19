@@ -3,15 +3,16 @@ package com.lph.baselib.network.bean
 /**
  * 用来实现是否成功的逻辑
  */
-data class ProjectResponse <T>(var errorCode:String,var errorMessage:String,var data:T):
-    BaseResponse<T>(){
-    override fun isSuccess()=errorCode=="0000"
+data class ProjectResponse <T>(var errorCode:Int,var errorMessage:String,var data:T){
+     fun isSuccess()=errorCode==0
 
-    override fun getResponseData(): T {
+     fun getResponseData(): T {
         return data
     }
 
-    override fun getResponseCode()=errorCode
+     fun getResponseCode()=errorCode
 
-    override fun getResponseMessage()=errorMessage
+     fun getResponseMessage()=errorMessage
+
+
 }

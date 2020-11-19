@@ -1,6 +1,8 @@
 package com.lph.baselib.base.activity
 
 import android.os.Bundle
+import android.text.TextUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -42,6 +44,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
     private fun init(savedInstanceState: Bundle?) {
         mViewModel = createViewModel()
         registerLoadingVM()
+        registerErrorVM()
         initView(savedInstanceState)
         createObserver()
         NetworkStateManager.instance.mNetworkStateCallback.observe(this, Observer {
@@ -76,6 +79,17 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
                 showLoading()
             }else{
                 dismissLoading()
+            }
+        })
+
+    }   /**
+     * 注册UI 事件
+     */
+    private fun registerErrorVM() {
+        //显示弹窗
+        mViewModel.errorMessage.observe(this, Observer {
+            if (!TextUtils.isEmpty(it)) {
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             }
         })
 

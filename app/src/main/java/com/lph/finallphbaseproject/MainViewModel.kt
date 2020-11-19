@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.lph.baselib.ext.request
 import com.lph.baselib.network.bean.*
+import com.lph.baselib.network.exception.ExceptionHandle
 import com.lph.baselib.viewmodel.BaseViewModel
 import com.lph.finallphbaseproject.data.repository.request.HttpRequestCoroutine
 import com.lph.lphmvvmbaseproject.data.model.bean.HomeBannerBean
@@ -26,24 +27,23 @@ class MainViewModel : BaseViewModel(){
     }
 
 
-    fun <T> request(
-        block: suspend () -> BaseResponse<T>,
-        resultState: MutableLiveData<ProjectResponse<T>>,
-        isShowDialog: Boolean = false,
-        loadingMessage: String = "请求网络中..."
-    ): Job {
-        return viewModelScope.launch {
-            runCatching {
+
+
+
+
+    fun <T>request(block:suspend ()->ProjectResponse<T>,resultViewModel:MutableLiveData<ProjectResponse<T>>,isShowDialog: Boolean=true){
+        viewModelScope.launch {
+            kotlin.runCatching {
                 if (isShowDialog) showLoading()
-                //请求体
                 block()
             }.onSuccess {
-                hideLoading()
-//                resultState.paresResult(it)
+                resultViewModel.value = it
+                if (isShowDialog) hideLoading()
             }.onFailure {
-                hideLoading()
-//                resultState.paresException(it)
+                showError(ExceptionHandle.handleException(it).errorMsg)
+                if (isShowDialog) hideLoading()
             }
+
         }
     }
 
