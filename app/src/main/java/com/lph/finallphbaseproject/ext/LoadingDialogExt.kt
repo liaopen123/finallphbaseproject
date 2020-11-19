@@ -68,3 +68,8 @@ fun Fragment.showLoadingExt(message: String = "网络请求中") {
     }
 
 }
+
+fun Fragment.hideLoadingExt() {
+    loadingDialog?.dismiss()
+    loadingDialog = null
+}

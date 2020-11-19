@@ -83,7 +83,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
         })
 
     }   /**
-     * 注册UI 事件
+     * 注册showError事件
      */
     private fun registerErrorVM() {
         //显示弹窗
